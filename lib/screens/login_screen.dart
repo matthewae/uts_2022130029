@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:uts_2022130029/utils/user_data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,15 +20,16 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = true;
       });
 
-      // Simulasi proses login (2 detik)
+      // Simulate network delay
       await Future.delayed(const Duration(seconds: 2));
 
       if (_emailController.text == "test@email.com" &&
           _passwordController.text == "testing") {
-        // Jika login berhasil → pindah ke halaman home
+        UserData.loggedInUserName = _emailController.text.split('@')[0];
+        // Navigate to home screen
         Navigator.of(context).pushReplacementNamed('/home');
       } else {
-        // Jika gagal → tampilkan dialog error
+        // Show error alert
         _showErrorAlert("Email atau password salah.");
       }
 
@@ -45,16 +46,12 @@ class _LoginScreenState extends State<LoginScreen> {
         return AlertDialog(
           title: const Text("Login Gagal"),
           content: Text(message),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          actions: [
+          actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text(
-                "OK",
-                style: TextStyle(color: Colors.blue),
-              ),
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
         );
@@ -65,15 +62,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF4268F6), Color(0xFF8B9EFF)],
+          colors: [
+            Color(0xFF4268F6), // Light blue
+            Color(0xFF8B9EFF), // Darker blue
+          ],
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent, // Make Scaffold background transparent
         body: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
@@ -82,50 +82,43 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Gambar di atas
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.33,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
+                      borderRadius: BorderRadius.circular(16.0), // Rounded corners for the image
                       child: Image.network(
-                        'https://via.placeholder.com/300x200.png?text=Login+Image',
+                        'https://via.placeholder.com/300x200.png?text=Login+Image', // Placeholder image from internet
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   const SizedBox(height: 48.0),
-
-                  // Judul
                   const Text(
                     "Welcome to BShop",
                     style: TextStyle(
-                      fontSize: 32.0,
+                      fontSize: 32.0, // Larger font size
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.white, // White text for contrast
                     ),
                   ),
-
                   const SizedBox(height: 24.0),
-
-                  // Field Email
                   TextFormField(
                     controller: _emailController,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white), // White text for input
                     decoration: InputDecoration(
                       labelText: "Email",
                       hintText: "ciah@example.com",
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      hintStyle: const TextStyle(color: Colors.white54),
+                      labelStyle: const TextStyle(color: Colors.white70), // Lighter label
+                      hintStyle: const TextStyle(color: Colors.white54), // Lighter hint
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.3),
+                      fillColor: Colors.white.withOpacity(0.3), // Semi-transparent fill
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                        borderSide: BorderSide.none, // No border line
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
-                        borderSide:
-                            const BorderSide(color: Colors.white, width: 2.0),
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0), // White border when focused
                       ),
                     ),
                     validator: (value) {
@@ -138,29 +131,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-
                   const SizedBox(height: 16.0),
-
-                  // Field Password
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white), // White text for input
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "your password",
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      hintStyle: const TextStyle(color: Colors.white54),
+                      labelStyle: const TextStyle(color: Colors.white70), // Lighter label
+                      hintStyle: const TextStyle(color: Colors.white54), // Lighter hint
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.3),
+                      fillColor: Colors.white.withOpacity(0.3), // Semi-transparent fill
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                        borderSide: BorderSide.none, // No border line
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
-                        borderSide:
-                            const BorderSide(color: Colors.white, width: 2.0),
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0), // White border when focused
                       ),
                     ),
                     validator: (value) {
@@ -173,27 +162,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-
                   const SizedBox(height: 24.0),
-
-                  // Tombol login atau loading
                   _isLoading
-                      ? const CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
-                        )
-                      : GFButton(
-                          onPressed: _login,
-                          text: "Login",
-                          textStyle: const TextStyle(
-                            fontSize: 18.0,
-                            color: Color(0xFF4268F6),
-                            fontWeight: FontWeight.bold,
+                      ? const CircularProgressIndicator(color: Colors.white) // White loading indicator
+                      : SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: _login,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white, // White button background
+                              padding: const EdgeInsets.symmetric(vertical: 16.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0), // More rounded corners
+                              ),
+                              elevation: 5, // Add some shadow
+                            ),
+                            child: const Text(
+                              "Login",
+                              style: TextStyle(fontSize: 18.0, color: Color(0xFF4268F6), fontWeight: FontWeight.bold), // Blue text for contrast
+                            ),
                           ),
-                          color: GFColors.WHITE,
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          shape: GFButtonShape.pills,
-                          fullWidthButton: true,
                         ),
                 ],
               ),

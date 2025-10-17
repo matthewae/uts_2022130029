@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:uts_2022130029/utils/user_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  String _searchQuery = "";
+  bool _isSearching = false;
+
+  // === 48 Nama Sparepart Mobil ===
+  final List<String> spareParts = [
+    "Kampas Rem", "Filter Oli", "Busi", "Aki Mobil", "Radiator",
+    "Shockbreaker", "Velg Racing", "Ban Mobil", "Lampu Depan", "Lampu Belakang",
+    "Filter Udara", "Kaca Spion", "Wiper Blade", "Klakson", "Oli Mesin",
+    "Timing Belt", "Karet Pintu", "Bumper Depan", "Bumper Belakang", "Handle Pintu",
+    "Sensor Oksigen", "Knalpot", "Kopling Set", "Bearing Roda", "Gearbox",
+    "Power Steering Pump", "Alternator", "Kompressor AC", "Fan Belt", "Tangki Bensin",
+    "Cermin Dalam", "Steering Wheel", "Pedal Gas", "Pedal Kopling", "Fuse Box", "ECU Mobil",
+    "Sensor ABS", "Cover Jok", "Karet Wiper", "Spoiler Belakang", "Shock Mount",
+    "Drive Shaft", "Lampu Kabin", "Airbag", "Handle Rem Tangan", "Filter Kabin",
+    "Saringan Bensin", "Reservoir Air Radiator", "Unit Injektor", "Tutup Oli"
+  ];
 
   @override
   void initState() {
@@ -28,21 +45,61 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  // === Filter Berdasarkan Pencarian ===
+  List<String> get filteredParts {
+    if (_searchQuery.isEmpty) return spareParts;
+    return spareParts
+        .where((part) => part.toLowerCase().contains(_searchQuery.toLowerCase()))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final int totalPages = (filteredParts.length / 12).ceil();
+
     return Scaffold(
       appBar: GFAppBar(
-        title: const Text("Our products"),
+        title: !_isSearching
+            ? const Text("Sparepart Mobil")
+            : SizedBox(
+                height: 40,
+                child: TextField(
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Cari sparepart...',
+                    hintStyle: TextStyle(color: Colors.white70),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  ),
+                  style: const TextStyle(color: Colors.white),
+                  onChanged: (value) {
+                    setState(() {
+                      _searchQuery = value;
+                      _currentPage = 0;
+                      _pageController.jumpToPage(0);
+                    });
+                  },
+                ),
+              ),
         actions: [
           GFIconButton(
-            icon: const Icon(Icons.search),
+            icon: Icon(
+              _isSearching ? Icons.close : Icons.search,
+              color: Colors.white,
+            ),
             onPressed: () {
-              // Handle search action
+              setState(() {
+                _isSearching = !_isSearching;
+                if (!_isSearching) {
+                  _searchQuery = "";
+                }
+              });
             },
             type: GFButtonType.transparent,
           ),
         ],
       ),
+
       drawer: GFDrawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -50,11 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             GFDrawerHeader(
               currentAccountPicture: const GFAvatar(
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.blue,
-                  size: 40,
-                ),
+                child: Icon(Icons.person, color: Colors.blue, size: 40),
               ),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -64,17 +117,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'John Doe',
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                  const Text(
-                    'john.doe@example.com',
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white70),
-                  ),
+                  Text(UserData.loggedInUserName ?? 'Guest',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white)),
+                  Text('john.doe@example.com',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white70)),
                 ],
               ),
             ),
@@ -82,9 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
               avatar: const Icon(Icons.home),
               title: const Text('Home'),
               icon: const Icon(Icons.arrow_forward_ios, size: 16.0),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => Navigator.pop(context),
             ),
             GFListTile(
               avatar: const Icon(Icons.shopping_cart),
@@ -93,6 +141,15 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/cart');
+              },
+            ),
+            GFListTile(
+              avatar: const Icon(Icons.person),
+              title: const Text('Profile'),
+              icon: const Icon(Icons.arrow_forward_ios, size: 16.0),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/profile');
               },
             ),
             GFListTile(
@@ -107,6 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+
+      // === BODY ===
       body: Column(
         children: [
           Expanded(
@@ -114,53 +173,64 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 PageView.builder(
                   controller: _pageController,
-                  itemCount: 10, // total 10 halaman
+                  itemCount: totalPages,
                   itemBuilder: (context, pageIndex) {
+                    final start = pageIndex * 12;
+                    final end = (start + 12 < filteredParts.length)
+                        ? start + 12
+                        : filteredParts.length;
+                    final items = filteredParts.sublist(start, end);
+
                     return GridView.builder(
-                      padding: const EdgeInsets.all(16.0),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, // dua kolom
-                        crossAxisSpacing: 16.0,
-                        mainAxisSpacing: 16.0,
-                        childAspectRatio: 0.75,
+                      padding: const EdgeInsets.all(12),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        childAspectRatio: 1,
                       ),
-                      itemCount: 12, // 12 item per halaman
-                      itemBuilder: (context, itemIndex) {
-                        final globalIndex = (pageIndex * 12) + itemIndex;
-                        return GFCard(
-                          boxFit: BoxFit.cover,
-                          image: Image.network(
-                            'https://via.placeholder.com/150?text=Product+${globalIndex + 1}',
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          ),
-                          title: GFListTile(
-                            title: Text(
-                              'Product Title ${globalIndex + 1}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                color: Colors.black87,
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 3,
+                                offset: const Offset(0, 1),
                               ),
-                            ),
-                            subTitle: Text(
-                              'Description ${globalIndex + 1}',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Colors.grey[600],
-                              ),
-                            ),
+                            ],
                           ),
-                          buttonBar: GFButtonBar(
-                            children: <Widget>[
-                              GFIconButton(
-                                onPressed: () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Product ${globalIndex + 1} added to favorites!')),
-                                  );
-                                },
-                                icon: const Icon(Icons.favorite_border),
-                                type: GFButtonType.transparent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.build_circle,
+                                  size: 45, color: Colors.blueGrey),
+                              const SizedBox(height: 8),
+                              Text(
+                                item,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              const Text(
+                                'Sparepart mobil berkualitas tinggi.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black54,
+                                ),
                               ),
                             ],
                           ),
@@ -169,55 +239,52 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                 ),
+
+                // Tombol panah kiri
                 if (_currentPage > 0)
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 8.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        shape: BoxShape.circle,
-                      ),
-                      child: GFIconButton(
-                        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-                        onPressed: () {
-                          _pageController.previousPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                        type: GFButtonType.transparent,
-                      ),
+                    child: GFIconButton(
+                      icon:
+                          const Icon(Icons.arrow_back_ios, color: Colors.white),
+                      onPressed: () {
+                        _pageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      },
+                      type: GFButtonType.transparent,
+                      color: Colors.black.withOpacity(0.5),
+                      shape: GFIconButtonShape.circle,
                     ),
                   ),
-                if (_currentPage < 9)
+
+                // Tombol panah kanan
+                if (_currentPage < totalPages - 1)
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 8.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        shape: BoxShape.circle,
-                      ),
-                      child: GFIconButton(
-                        icon: const Icon(Icons.arrow_forward_ios, color: Colors.white),
-                        onPressed: () {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                        type: GFButtonType.transparent,
-                      ),
+                    child: GFIconButton(
+                      icon: const Icon(Icons.arrow_forward_ios,
+                          color: Colors.white),
+                      onPressed: () {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      },
+                      type: GFButtonType.transparent,
+                      color: Colors.black.withOpacity(0.5),
+                      shape: GFIconButtonShape.circle,
                     ),
                   ),
               ],
             ),
           ),
-          // Pagination dots
+
+          // Dots indikator halaman
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(10, (index) {
+            children: List.generate(totalPages, (index) {
               return GestureDetector(
                 onTap: () {
                   _pageController.animateToPage(
@@ -227,12 +294,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Container(
-                  width: 8.0,
-                  height: 8.0,
-                  margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  width: 8,
+                  height: 8,
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _currentPage == index ? Colors.blueAccent : Colors.grey,
+                    color:
+                        _currentPage == index ? Colors.blueAccent : Colors.grey,
                   ),
                 ),
               );
@@ -240,18 +309,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
       floatingActionButton: GFButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Item added to cart!')),
+            const SnackBar(content: Text('Item ditambahkan ke keranjang!')),
           );
         },
-        text: 'Add to Cart',
+        text: 'Tambah ke Keranjang',
         icon: const Icon(Icons.shopping_cart, color: Colors.white),
         color: Colors.blue,
         textColor: Colors.white,
         shape: GFButtonShape.pills,
-        size: GFSize.LARGE,
+        size: GFSize.MEDIUM,
       ),
     );
   }
