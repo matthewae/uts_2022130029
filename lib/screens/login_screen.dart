@@ -13,6 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
+  bool _isPasswordVisible = false; // New state variable for password visibility
 
   void _login() async {
     if (_formKey.currentState?.validate() ?? false) {
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent, // Make Scaffold background transparent
+        backgroundColor: Colors.transparent,
         body: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
@@ -82,43 +83,72 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // === Placeholder Foto (Tampilan Baru) ===
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.33,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0), // Rounded corners for the image
-                      child: Image.network(
-                        'https://via.placeholder.com/300x200.png?text=Login+Image', // Placeholder image from internet
-                        fit: BoxFit.cover,
+                    child: Center(
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/images/logo.png', // Ganti nanti dengan gambar kamu
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Center(
+                                child: Icon(
+                                  Icons.image_outlined,
+                                  size: 60,
+                                  color: Colors.grey[400],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
                   ),
+                  // ==========================================
                   const SizedBox(height: 48.0),
                   const Text(
                     "Welcome to BShop",
                     style: TextStyle(
-                      fontSize: 32.0, // Larger font size
+                      fontSize: 32.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white, // White text for contrast
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 24.0),
                   TextFormField(
                     controller: _emailController,
-                    style: const TextStyle(color: Colors.white), // White text for input
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: "Email",
                       hintText: "ciah@example.com",
-                      labelStyle: const TextStyle(color: Colors.white70), // Lighter label
-                      hintStyle: const TextStyle(color: Colors.white54), // Lighter hint
+                      labelStyle: const TextStyle(color: Colors.white70),
+                      hintStyle: const TextStyle(color: Colors.white54),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.3), // Semi-transparent fill
+                      fillColor: Colors.white.withOpacity(0.3),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
-                        borderSide: BorderSide.none, // No border line
+                        borderRadius: BorderRadius.circular(12.0),
+                        borderSide: BorderSide.none,
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0), // White border when focused
+                        borderSide: const BorderSide(
+                            color: Colors.white, width: 2.0),
                       ),
                     ),
                     validator: (value) {
@@ -134,22 +164,36 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 16.0),
                   TextFormField(
                     controller: _passwordController,
-                    obscureText: true,
-                    style: const TextStyle(color: Colors.white), // White text for input
+                    obscureText: !_isPasswordVisible, // Use the state variable here
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "your password",
-                      labelStyle: const TextStyle(color: Colors.white70), // Lighter label
-                      hintStyle: const TextStyle(color: Colors.white54), // Lighter hint
+                      labelStyle: const TextStyle(color: Colors.white70),
+                      hintStyle: const TextStyle(color: Colors.white54),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.3), // Semi-transparent fill
+                      fillColor: Colors.white.withOpacity(0.3),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
-                        borderSide: BorderSide.none, // No border line
+                        borderRadius: BorderRadius.circular(12.0),
+                        borderSide: BorderSide.none,
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0), // White border when focused
+                        borderSide: const BorderSide(
+                            color: Colors.white, width: 2.0),
+                      ),
+                      suffixIcon: IconButton( // Add suffixIcon for toggling password visibility
+                        icon: Icon(
+                          _isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.white70,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
                       ),
                     ),
                     validator: (value) {
@@ -164,22 +208,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 24.0),
                   _isLoading
-                      ? const CircularProgressIndicator(color: Colors.white) // White loading indicator
+                      ? const CircularProgressIndicator(color: Colors.white)
                       : SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: _login,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white, // White button background
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
+                              backgroundColor: Colors.white,
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16.0),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0), // More rounded corners
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
-                              elevation: 5, // Add some shadow
+                              elevation: 5,
                             ),
                             child: const Text(
                               "Login",
-                              style: TextStyle(fontSize: 18.0, color: Color(0xFF4268F6), fontWeight: FontWeight.bold), // Blue text for contrast
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Color(0xFF4268F6),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:uts_2022130029/utils/user_data.dart'; // ✅ Tambah ini untuk deteksi login
+import 'package:uts_2022130029/utils/user_data.dart'; 
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
