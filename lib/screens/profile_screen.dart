@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:uts_2022130029/utils/user_data.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget { // Changed to StatefulWidget
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Initialize UserData.shippingAddress if it's null
+    UserData.shippingAddress ??= '123 Main St, Anytown USA';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextFormField(
                     readOnly: true,
-                    initialValue: '123 Main St, Anytown USA',
+                    initialValue: UserData.shippingAddress, // Menggunakan alamat dari UserData
                     decoration: const InputDecoration(
                       labelText: 'Address',
                       border: OutlineInputBorder(),
