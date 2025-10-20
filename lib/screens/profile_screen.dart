@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:uts_2022130029/utils/user_data.dart';
 
-class ProfileScreen extends StatefulWidget { // Changed to StatefulWidget
+class ProfileScreen extends StatefulWidget { 
   const ProfileScreen({super.key});
 
   @override
@@ -14,7 +14,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     // Initialize UserData.shippingAddress if it's null
-    UserData.shippingAddress ??= '123 Main St, Anytown USA';
+    UserData.shippingAddress ??= 'Cipageran Asri, Cimahi, Jawa Barat';
   }
 
   @override
@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   const Text(
-                    'john.doe@example.com',
+                    'test@email.com',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white70,
@@ -180,7 +180,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 10),
                   TextFormField(
                     readOnly: true,
-                    initialValue: '+1234567890',
+                    initialValue: '+62 8173740198',
                     decoration: const InputDecoration(
                       labelText: 'Phone Number',
                       border: OutlineInputBorder(),

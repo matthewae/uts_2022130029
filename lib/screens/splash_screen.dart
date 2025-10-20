@@ -13,16 +13,20 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
+  late Animation<double> _scaleAnimation; // New scale animation
 
   @override
   void initState() {
     super.initState();
 
-    // ✅ Inisialisasi animasi fade
+    // ✅ Inisialisasi animasi fade dan scale
     _fadeController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _fadeAnimation =
         CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeOutBack),
+    ); // Scale from 0.5 to 1.0
     _fadeController.forward();
 
     // ✅ Jalankan navigasi
@@ -65,20 +69,32 @@ class _SplashScreenState extends State<SplashScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // ✅ Pastikan sudah daftarkan asset ini di pubspec.yaml
-                Image.asset(
-                  'assets/images/splash_image.png',
-                  width: 150,
-                  height: 150,
+                ScaleTransition( // Added ScaleTransition
+                  scale: _scaleAnimation,
+                  child: Image.asset(
+                    'assets/images/splash_image.png',
+                    width: 150,
+                    height: 150,
+                  ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20), // Adjusted spacing
+                const Text( // Added app name/tagline
+                  'BShop',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+                const SizedBox(height: 30), // Adjusted spacing
                 const SizedBox(
                   height: 60,
                   width: 60,
                   child: GFLoader(
                     type: GFLoaderType.circle,
                     loaderColorOne: Colors.white,
-                    loaderColorTwo: Colors.lightBlueAccent,
+                    loaderColorTwo: Colors.purpleAccent, // Changed loader color
                     loaderColorThree: Colors.white70,
                   ),
                 ),

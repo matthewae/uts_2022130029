@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:uts_2022130029/utils/user_data.dart'; // Import UserData
+import 'package:uts_2022130029/utils/user_data.dart'; 
 
 class CartItem {
   final String id;
@@ -21,7 +21,7 @@ class CartManager with ChangeNotifier {
   final Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items => Map.unmodifiable(_items);
-  String? get shippingAddress => UserData.shippingAddress; // Mengambil alamat dari UserData
+  String? get shippingAddress => UserData.shippingAddress; 
 
   int get itemCount => _items.length;
   double get subtotal => _items.values.fold(0.0, (sum, item) => sum + (item.price * item.quantity));

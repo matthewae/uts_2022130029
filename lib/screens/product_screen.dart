@@ -51,23 +51,9 @@ class _ProductScreenState extends State<ProductScreen> {
               height: 250, // Increased image height
               width: double.infinity,
               color: Colors.grey[200],
-              child: Image.network(
+              child: Image.asset(
                 imageUrl,
                 fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) => Center(
-                  child: Icon(Icons.image_not_supported, size: 60, color: Colors.grey[600]),
-                ),
               ),
             ),
             // Product Details Card

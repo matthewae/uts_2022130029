@@ -33,152 +33,152 @@ class _HomeScreenState extends State<HomeScreen> {
     "Kampas Rem": {
       "description": "Kampas rem berkualitas tinggi untuk pengereman optimal.",
       "price": "Rp 150.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Kampas Rem.png"
     },
     "Filter Oli": {
       "description": "Filter oli untuk menjaga kebersihan oli mesin.",
       "price": "Rp 50.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Filter Oli.png"
     },
     "Busi": {
       "description": "Busi iridium untuk performa mesin yang lebih baik.",
       "price": "Rp 75.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Busi.png"
     },
     "Aki Mobil": {
       "description": "Aki mobil bebas perawatan dengan daya tahan tinggi.",
       "price": "Rp 800.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Aki Mobil.png"
     },
     "Radiator": {
       "description": "Radiator aluminium untuk pendinginan mesin yang efisien.",
       "price": "Rp 1.200.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Radiator.png"
     },
     "Shockbreaker": {
       "description": "Shockbreaker nyaman untuk stabilitas berkendara.",
       "price": "Rp 600.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Shockbreaker.png"
     },
     "Velg Racing": {
       "description": "Velg racing ringan untuk tampilan sporty.",
       "price": "Rp 3.500.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Velg Racing.png"
     },
     "Ban Mobil": {
       "description": "Ban mobil performa tinggi untuk cengkeraman maksimal.",
       "price": "Rp 900.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Ban Mobil.png"
     },
     "Lampu Depan": {
       "description": "Lampu depan LED terang untuk visibilitas malam hari.",
       "price": "Rp 400.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Lampu Depan.png"
     },
     "Lampu Belakang": {
       "description": "Lampu belakang LED modern untuk keamanan.",
       "price": "Rp 350.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Lampu Belakang.png"
     },
     "Filter Udara": {
-      "description": "Filter udara untuk menjaga kebersihan udara masuk mesin.",
-      "price": "Rp 60.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Filter udara mesin untuk performa optimal.",
+      "price": "Rp 150.000",
+      "imageUrl": "assets/Filter Udara.png"
     },
     "Kaca Spion": {
-      "description": "Kaca spion elektrik dengan pemanas.",
-      "price": "Rp 250.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Kaca spion elegan dengan pandangan luas.",
+      "price": "Rp 200.000",
+      "imageUrl": "assets/Kaca Spion.png"
     },
     "Wiper Blade": {
       "description": "Wiper blade silikon untuk sapuan bersih.",
       "price": "Rp 80.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Wiper Blade.png"
     },
     "Klakson": {
       "description": "Klakson mobil suara nyaring.",
       "price": "Rp 100.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Klakson.png"
     },
     "Oli Mesin": {
       "description": "Oli mesin sintetis untuk perlindungan maksimal.",
-      "price": "Rp 120.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "price": "Rp 100.000",
+      "imageUrl": "assets/Oli Mesin.png"
     },
     "Timing Belt": {
-      "description": "Timing belt berkualitas tinggi untuk mesin.",
+      "description": "Timing belt berkualitas tinggi untuk performa mesin optimal.",
       "price": "Rp 300.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Timing Belt.png"
     },
     "Karet Pintu": {
-      "description": "Karet pintu untuk kedap suara dan air.",
-      "price": "Rp 70.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Karet pintu mobil untuk kedap suara dan air.",
+      "price": "Rp 50.000",
+      "imageUrl": "assets/Karet Pintu.png"
     },
     "Bumper Depan": {
-      "description": "Bumper depan sporty untuk tampilan agresif.",
+      "description": "Bumper depan sporty untuk tampilan modern.",
       "price": "Rp 1.500.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Bumper Depan.png"
     },
     "Bumper Belakang": {
       "description": "Bumper belakang kokoh untuk perlindungan.",
       "price": "Rp 1.400.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Bumper Belakang.png"
     },
     "Handle Pintu": {
       "description": "Handle pintu krom untuk sentuhan mewah.",
       "price": "Rp 90.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Handle Pintu.png"
     },
     "Sensor Oksigen": {
-      "description": "Sensor oksigen untuk efisiensi bahan bakar.",
-      "price": "Rp 200.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Sensor oksigen presisi untuk efisiensi bahan bakar.",
+      "price": "Rp 280.000",
+      "imageUrl": "assets/Sensor Oksigen.png"
     },
     "Knalpot": {
       "description": "Knalpot racing untuk suara sporty.",
       "price": "Rp 700.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Knalpot.png"
     },
     "Kopling Set": {
       "description": "Kopling set lengkap untuk transmisi halus.",
-      "price": "Rp 1.100.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "price": "Rp 850.000",
+      "imageUrl": "assets/Kopling Set.png"
     },
     "Bearing Roda": {
-      "description": "Bearing roda presisi untuk putaran halus.",
-      "price": "Rp 180.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Bearing roda tahan lama untuk putaran halus.",
+      "price": "Rp 130.000",
+      "imageUrl": "assets/Bearing Roda.png"
     },
     "Gearbox": {
-      "description": "Gearbox transmisi otomatis berkualitas.",
-      "price": "Rp 5.000.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Gearbox transmisi otomatis responsif.",
+      "price": "Rp 7.000.000",
+      "imageUrl": "assets/Gearbox.png"
     },
     "Power Steering Pump": {
-      "description": "Pompa power steering untuk kemudi ringan.",
-      "price": "Rp 450.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Power steering pump untuk kemudi ringan.",
+      "price": "Rp 950.000",
+      "imageUrl": "assets/Power Steering Pump.png"
     },
     "Alternator": {
-      "description": "Alternator untuk pengisian aki optimal.",
-      "price": "Rp 600.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Alternator berkualitas untuk pengisian daya optimal.",
+      "price": "Rp 1.200.000",
+      "imageUrl": "assets/Alternator.png"
     },
     "Kompressor AC": {
-      "description": "Kompresor AC dingin untuk kenyamanan.",
-      "price": "Rp 1.800.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "description": "Kompressor AC dingin untuk kenyamanan berkendara.",
+      "price": "Rp 2.500.000",
+      "imageUrl": "assets/Kompressor AC.png"
     },
     "Fan Belt": {
-      "description": "Fan belt kuat untuk putaran mesin.",
+      "description": "Fan belt kuat untuk kinerja mesin optimal.",
       "price": "Rp 90.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Fan Belt.png"
     },
     "Tangki Bensin": {
       "description": "Tangki bensin anti karat.",
       "price": "Rp 700.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Tangki Bensin.png"
     },
     "Cermin Dalam": {
       "description": "Cermin dalam anti silau.",

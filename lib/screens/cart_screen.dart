@@ -52,7 +52,7 @@ class _CartScreenState extends State<CartScreen> {
                               SizedBox(
                                 width: 80,
                                 height: 80,
-                                child: Image.network(
+                                child: Image.asset(
                                   cartItem.imageUrl,
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) => const Icon(Icons.image_not_supported),
