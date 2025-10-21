@@ -13,7 +13,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize UserData.shippingAddress if it's null
+    // Data user dummy
     UserData.shippingAddress ??= 'Cipageran Asri, Cimahi, Jawa Barat';
   }
 
@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
 
-      // === BODY ===
+      // === Bagian utama ===
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -169,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 10),
                   TextFormField(
                     readOnly: true,
-                    initialValue: UserData.shippingAddress, // Menggunakan alamat dari UserData
+                    initialValue: UserData.shippingAddress, // alamat dari dummy data
                     decoration: const InputDecoration(
                       labelText: 'Address',
                       border: OutlineInputBorder(),

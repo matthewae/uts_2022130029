@@ -39,16 +39,16 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.productName),
-        elevation: 0, // Remove app bar shadow
-        backgroundColor: Colors.deepPurple, // Example color
+        elevation: 0, 
+        backgroundColor: Colors.deepPurple, 
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Product Image with loading indicator
+
             Container(
-              height: 250, // Increased image height
+              height: 250, 
               width: double.infinity,
               color: Colors.grey[200],
               child: Image.asset(
@@ -56,23 +56,23 @@ class _ProductScreenState extends State<ProductScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-            // Product Details Card
+            
             Card(
               margin: const EdgeInsets.all(16.0),
-              elevation: 5, // Added elevation to the card
+              elevation: 5, 
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
               child: Padding(
-                padding: const EdgeInsets.all(20.0), // Increased padding
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       widget.productName,
                       style: const TextStyle(
-                        fontSize: 30, // Further increased font size
+                        fontSize: 30, // ukuran font
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple,
-                      ), // Adjusted color
+                      ), 
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -81,13 +81,13 @@ class _ProductScreenState extends State<ProductScreen> {
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
-                      ), // Adjusted color
+                      ),
                     ),
-                    const Divider(height: 30, thickness: 1), // Added a divider
+                    const Divider(height: 30, thickness: 1), // divider
                     Text(
                       description,
                       style: const TextStyle(fontSize: 17, color: Colors.black87, height: 1.5), // Adjusted line height
-                      textAlign: TextAlign.justify, // Justified text
+                      textAlign: TextAlign.justify, 
                     ),
                     const SizedBox(height: 30),
                     Row(
@@ -119,7 +119,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         ElevatedButton.icon(
                           onPressed: () {
                             final cartManager = Provider.of<CartManager>(context, listen: false);
-                            final String productId = widget.productName; // Menggunakan nama produk sebagai ID
+                            final String productId = widget.productName; 
                             final String name = widget.productName;
                             final double itemPrice = double.parse(price.replaceAll('Rp ', '').replaceAll('.', ''));
                             final String imageUrl = product?['imageUrl'] ?? 'https://via.placeholder.com/150';
@@ -131,15 +131,15 @@ class _ProductScreenState extends State<ProductScreen> {
                             );
                             Navigator.of(context).pushNamed('/cart'); // Navigasi ke CartScreen
                           },
-                          icon: const Icon(Icons.shopping_cart, color: Colors.white), // Added icon
+                          icon: const Icon(Icons.shopping_cart, color: Colors.white), // icon
                           label: const Text('Add to cart', style: TextStyle(fontSize: 17, color: Colors.white)),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurple, // Consistent color
-                            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14), // Increased padding
+                            backgroundColor: Colors.deepPurple, 
+                            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14), 
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            elevation: 3, // Added elevation to button
+                            elevation: 3, 
                           ),
                         ),
                       ],

@@ -15,270 +15,312 @@ class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = "";
   bool _isSearching = false;
 
-  // === 48 Nama Sparepart Mobil ===
+  // === Daftar Sparepart ===
   final List<String> spareParts = [
-    "Kampas Rem", "Filter Oli", "Busi", "Aki Mobil", "Radiator",
-    "Shockbreaker", "Velg Racing", "Ban Mobil", "Lampu Depan", "Lampu Belakang",
-    "Filter Udara", "Kaca Spion", "Wiper Blade", "Klakson", "Oli Mesin",
-    "Timing Belt", "Karet Pintu", "Bumper Depan", "Bumper Belakang", "Handle Pintu",
-    "Sensor Oksigen", "Knalpot", "Kopling Set", "Bearing Roda", "Gearbox",
-    "Power Steering Pump", "Alternator", "Kompressor AC", "Fan Belt", "Tangki Bensin",
-    "Cermin Dalam", "Steering Wheel", "Pedal Gas", "Pedal Kopling", "Fuse Box", "ECU Mobil",
-    "Sensor ABS", "Cover Jok", "Karet Wiper", "Spoiler Belakang", "Shock Mount",
-    "Drive Shaft", "Lampu Kabin", "Airbag", "Handle Rem Tangan", "Filter Kabin",
-    "Saringan Bensin", "Reservoir Air Radiator", "Unit Injektor", "Tutup Oli"
+    "Kampas Rem",
+    "Filter Oli",
+    "Busi",
+    "Aki Mobil",
+    "Radiator",
+    "Shockbreaker",
+    "Velg Racing",
+    "Ban Mobil",
+    "Lampu Depan",
+    "Lampu Belakang",
+    "Filter Udara",
+    "Kaca Spion",
+    "Wiper Blade",
+    "Klakson",
+    "Oli Mesin",
+    "Timing Belt",
+    "Karet Pintu",
+    "Bumper Depan",
+    "Bumper Belakang",
+    "Handle Pintu",
+    "Sensor Oksigen",
+    "Knalpot",
+    "Kopling Set",
+    "Bearing Roda",
+    "Gearbox",
+    "Power Steering Pump",
+    "Alternator",
+    "Kompressor AC",
+    "Fan Belt",
+    "Tangki Bensin",
+    "Cermin Dalam",
+    "Steering Wheel",
+    "Pedal Gas",
+    "Pedal Kopling",
+    "Fuse Box",
+    "ECU Mobil",
+    "Sensor ABS",
+    "Cover Jok",
+    "Karet Wiper",
+    "Spoiler Belakang",
+    "Shock Mount",
+    "Drive Shaft",
+    "Lampu Kabin",
+    "Airbag",
+    "Handle Rem Tangan",
+    "Filter Kabin",
+    "Saringan Bensin",
+    "Reservoir Air Radiator",
+    "Unit Injektor",
+    "Tutup Oli",
   ];
 
   final Map<String, Map<String, String>> productDetails = {
     "Kampas Rem": {
       "description": "Kampas rem berkualitas tinggi untuk pengereman optimal.",
       "price": "Rp 150.000",
-      "imageUrl": "assets/Kampas Rem.png"
+      "imageUrl": "assets/Kampas Rem.png",
     },
     "Filter Oli": {
       "description": "Filter oli untuk menjaga kebersihan oli mesin.",
       "price": "Rp 50.000",
-      "imageUrl": "assets/Filter Oli.png"
+      "imageUrl": "assets/Filter Oli.png",
     },
     "Busi": {
       "description": "Busi iridium untuk performa mesin yang lebih baik.",
       "price": "Rp 75.000",
-      "imageUrl": "assets/Busi.png"
+      "imageUrl": "assets/Busi.png",
     },
     "Aki Mobil": {
       "description": "Aki mobil bebas perawatan dengan daya tahan tinggi.",
       "price": "Rp 800.000",
-      "imageUrl": "assets/Aki Mobil.png"
+      "imageUrl": "assets/Aki Mobil.png",
     },
     "Radiator": {
       "description": "Radiator aluminium untuk pendinginan mesin yang efisien.",
       "price": "Rp 1.200.000",
-      "imageUrl": "assets/Radiator.png"
+      "imageUrl": "assets/Radiator.png",
     },
     "Shockbreaker": {
       "description": "Shockbreaker nyaman untuk stabilitas berkendara.",
       "price": "Rp 600.000",
-      "imageUrl": "assets/Shockbreaker.png"
+      "imageUrl":
+          "assets/Shockbreaker.png", //contoh yang ada asset gambar sisanya lakuakn hal yang sama
     },
     "Velg Racing": {
       "description": "Velg racing ringan untuk tampilan sporty.",
       "price": "Rp 3.500.000",
-      "imageUrl": "assets/Velg Racing.png"
+      "imageUrl": "assets/Velg Racing.png",
     },
     "Ban Mobil": {
       "description": "Ban mobil performa tinggi untuk cengkeraman maksimal.",
       "price": "Rp 900.000",
-      "imageUrl": "assets/Ban Mobil.png"
+      "imageUrl": "assets/Ban Mobil.png",
     },
     "Lampu Depan": {
       "description": "Lampu depan LED terang untuk visibilitas malam hari.",
       "price": "Rp 400.000",
-      "imageUrl": "assets/Lampu Depan.png"
+      "imageUrl": "assets/Lampu Depan.png",
     },
     "Lampu Belakang": {
       "description": "Lampu belakang LED modern untuk keamanan.",
       "price": "Rp 350.000",
-      "imageUrl": "assets/Lampu Belakang.png"
+      "imageUrl": "assets/Lampu Belakang.png",
     },
     "Filter Udara": {
       "description": "Filter udara mesin untuk performa optimal.",
       "price": "Rp 150.000",
-      "imageUrl": "assets/Filter Udara.png"
+      "imageUrl": "assets/Filter Udara.png",
     },
     "Kaca Spion": {
       "description": "Kaca spion elegan dengan pandangan luas.",
       "price": "Rp 200.000",
-      "imageUrl": "assets/Kaca Spion.png"
+      "imageUrl": "assets/Kaca Spion.png",
     },
     "Wiper Blade": {
       "description": "Wiper blade silikon untuk sapuan bersih.",
       "price": "Rp 80.000",
-      "imageUrl": "assets/Wiper Blade.png"
+      "imageUrl": "assets/Wiper Blade.png",
     },
     "Klakson": {
       "description": "Klakson mobil suara nyaring.",
       "price": "Rp 100.000",
-      "imageUrl": "assets/Klakson.png"
+      "imageUrl": "assets/Klakson.png",
     },
     "Oli Mesin": {
       "description": "Oli mesin sintetis untuk perlindungan maksimal.",
       "price": "Rp 100.000",
-      "imageUrl": "assets/Oli Mesin.png"
+      "imageUrl": "assets/Oli Mesin.png",
     },
     "Timing Belt": {
-      "description": "Timing belt berkualitas tinggi untuk performa mesin optimal.",
+      "description":
+          "Timing belt berkualitas tinggi untuk performa mesin optimal.",
       "price": "Rp 300.000",
-      "imageUrl": "assets/Timing Belt.png"
+      "imageUrl": "assets/Timing Belt.png",
     },
     "Karet Pintu": {
       "description": "Karet pintu mobil untuk kedap suara dan air.",
       "price": "Rp 50.000",
-      "imageUrl": "assets/Karet Pintu.png"
+      "imageUrl": "assets/Karet Pintu.png",
     },
     "Bumper Depan": {
       "description": "Bumper depan sporty untuk tampilan modern.",
       "price": "Rp 1.500.000",
-      "imageUrl": "assets/Bumper Depan.png"
+      "imageUrl": "assets/Bumper Depan.png",
     },
     "Bumper Belakang": {
       "description": "Bumper belakang kokoh untuk perlindungan.",
       "price": "Rp 1.400.000",
-      "imageUrl": "assets/Bumper Belakang.png"
+      "imageUrl": "assets/Bumper Belakang.png",
     },
     "Handle Pintu": {
       "description": "Handle pintu krom untuk sentuhan mewah.",
       "price": "Rp 90.000",
-      "imageUrl": "assets/Handle Pintu.png"
+      "imageUrl": "assets/Handle Pintu.png",
     },
     "Sensor Oksigen": {
       "description": "Sensor oksigen presisi untuk efisiensi bahan bakar.",
       "price": "Rp 280.000",
-      "imageUrl": "assets/Sensor Oksigen.png"
+      "imageUrl": "assets/Sensor Oksigen.png",
     },
     "Knalpot": {
       "description": "Knalpot racing untuk suara sporty.",
       "price": "Rp 700.000",
-      "imageUrl": "assets/Knalpot.png"
+      "imageUrl": "assets/Knalpot.png",
     },
     "Kopling Set": {
       "description": "Kopling set lengkap untuk transmisi halus.",
       "price": "Rp 850.000",
-      "imageUrl": "assets/Kopling Set.png"
+      "imageUrl": "assets/Kopling Set.png",
     },
     "Bearing Roda": {
       "description": "Bearing roda tahan lama untuk putaran halus.",
       "price": "Rp 130.000",
-      "imageUrl": "assets/Bearing Roda.png"
+      "imageUrl": "assets/Bearing Roda.png",
     },
     "Gearbox": {
       "description": "Gearbox transmisi otomatis responsif.",
       "price": "Rp 7.000.000",
-      "imageUrl": "assets/Gearbox.png"
+      "imageUrl": "assets/Gearbox.png",
     },
     "Power Steering Pump": {
       "description": "Power steering pump untuk kemudi ringan.",
       "price": "Rp 950.000",
-      "imageUrl": "assets/Power Steering Pump.png"
+      "imageUrl": "assets/Power Steering Pump.png",
     },
     "Alternator": {
       "description": "Alternator berkualitas untuk pengisian daya optimal.",
       "price": "Rp 1.200.000",
-      "imageUrl": "assets/Alternator.png"
+      "imageUrl": "assets/Alternator.png",
     },
     "Kompressor AC": {
       "description": "Kompressor AC dingin untuk kenyamanan berkendara.",
       "price": "Rp 2.500.000",
-      "imageUrl": "assets/Kompressor AC.png"
+      "imageUrl": "assets/Kompressor AC.png",
     },
     "Fan Belt": {
       "description": "Fan belt kuat untuk kinerja mesin optimal.",
       "price": "Rp 90.000",
-      "imageUrl": "assets/Fan Belt.png"
+      "imageUrl": "assets/Fan Belt.png",
     },
     "Tangki Bensin": {
       "description": "Tangki bensin anti karat.",
       "price": "Rp 700.000",
-      "imageUrl": "assets/Tangki Bensin.png"
+      "imageUrl": "assets/Tangki Bensin.png",
     },
     "Cermin Dalam": {
       "description": "Cermin dalam anti silau.",
       "price": "Rp 120.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Kampas Rem.png",
     },
     "Steering Wheel": {
       "description": "Setir kulit sporty.",
       "price": "Rp 500.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Steering Wheel.png",
     },
     "Pedal Gas": {
       "description": "Pedal gas responsif.",
       "price": "Rp 80.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Pedal Gas.png",
     },
     "Pedal Kopling": {
       "description": "Pedal kopling empuk.",
       "price": "Rp 70.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Pedal Kopling.png",
     },
     "Fuse Box": {
       "description": "Kotak sekering lengkap.",
       "price": "Rp 150.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Fuse Box.png",
     },
     "ECU Mobil": {
       "description": "ECU mobil performa tinggi.",
       "price": "Rp 2.500.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/ECU Mobil.png",
     },
     "Sensor ABS": {
       "description": "Sensor ABS untuk pengereman aman.",
       "price": "Rp 300.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Sensor ABS.png",
     },
     "Cover Jok": {
       "description": "Cover jok kulit mewah.",
       "price": "Rp 700.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Cover Jok.png",
     },
     "Karet Wiper": {
       "description": "Karet wiper tahan lama.",
       "price": "Rp 40.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Karet Wiper.png",
     },
     "Spoiler Belakang": {
       "description": "Spoiler belakang aerodinamis.",
       "price": "Rp 400.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Spoiler Belakang.png",
     },
     "Shock Mount": {
       "description": "Shock mount kuat.",
       "price": "Rp 100.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Shock Mount.png",
     },
     "Drive Shaft": {
       "description": "Drive shaft presisi.",
       "price": "Rp 900.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Drive Shaft.png",
     },
     "Lampu Kabin": {
       "description": "Lampu kabin LED terang.",
       "price": "Rp 60.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Lampu Kabin.png",
     },
     "Airbag": {
       "description": "Airbag keselamatan.",
       "price": "Rp 1.500.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Airbag.png",
     },
     "Handle Rem Tangan": {
       "description": "Handle rem tangan ergonomis.",
       "price": "Rp 110.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Handle Rem Tangan.png",
     },
     "Filter Kabin": {
       "description": "Filter kabin anti bakteri.",
       "price": "Rp 55.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Filter Kabin.png",
     },
     "Saringan Bensin": {
       "description": "Saringan bensin bersih.",
       "price": "Rp 45.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Saringan Bensin.png",
     },
     "Reservoir Air Radiator": {
       "description": "Reservoir air radiator tahan panas.",
       "price": "Rp 70.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Reservoir Air Radiator.png",
     },
     "Unit Injektor": {
       "description": "Unit injektor efisien.",
       "price": "Rp 300.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Unit Injektor.png",
     },
     "Tutup Oli": {
       "description": "Tutup oli mesin rapat.",
       "price": "Rp 30.000",
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "assets/Tutup Oli.png",
     },
   };
 
@@ -298,11 +340,13 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  // === Filter Berdasarkan Pencarian ===
+  // Filter hasil pencarian
   List<String> get filteredParts {
     if (_searchQuery.isEmpty) return spareParts;
     return spareParts
-        .where((part) => part.toLowerCase().contains(_searchQuery.toLowerCase()))
+        .where(
+          (part) => part.toLowerCase().contains(_searchQuery.toLowerCase()),
+        )
         .toList();
   }
 
@@ -353,6 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
+      // Navigasi
       drawer: GFDrawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -372,12 +417,20 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(UserData.loggedInUserName ?? 'Guest',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white)),
-                  Text('john.doe@example.com',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white70)),
+                  Text(
+                    UserData.loggedInUserName ?? 'Guest',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Text(
+                    'john.doe@example.com',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -385,7 +438,10 @@ class _HomeScreenState extends State<HomeScreen> {
               avatar: const Icon(Icons.home),
               title: const Text('Home'),
               icon: const Icon(Icons.arrow_forward_ios, size: 16.0),
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+                // Tetap di halaman Home
+              },
             ),
             GFListTile(
               avatar: const Icon(Icons.shopping_cart),
@@ -402,7 +458,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.arrow_forward_ios, size: 16.0),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/profile');
+                Navigator.pushReplacementNamed(context, '/profile');
               },
             ),
             GFListTile(
@@ -418,7 +474,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      // === BODY ===
+      // BODY
       body: Column(
         children: [
           Expanded(
@@ -438,11 +494,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(12),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 1,
-                      ),
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 1,
+                          ),
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
@@ -475,8 +531,22 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Icon(Icons.build_circle,
-                                    size: 45, color: Colors.blueGrey),
+                                Image(
+                                  image: AssetImage(
+                                    productDetails[item]?['imageUrl'] ??
+                                        'assets/Kampas Rem.png',
+                                  ),
+                                  height: 45,
+                                  width: 45,
+                                  fit: BoxFit.contain,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Icon(
+                                      Icons.build_circle,
+                                      size: 45,
+                                      color: Colors.blueGrey,
+                                    );
+                                  },
+                                ),
                                 const SizedBox(height: 8),
                                 Text(
                                   item,
@@ -498,7 +568,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  productDetails[item]?['price'] ?? 'Harga tidak tersedia',
+                                  productDetails[item]?['price'] ??
+                                      'Harga tidak tersedia',
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontSize: 13,
@@ -520,8 +591,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: GFIconButton(
-                      icon:
-                          const Icon(Icons.arrow_back_ios, color: Colors.white),
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
                       onPressed: () {
                         _pageController.previousPage(
                           duration: const Duration(milliseconds: 300),
@@ -539,8 +612,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: GFIconButton(
-                      icon: const Icon(Icons.arrow_forward_ios,
-                          color: Colors.white),
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
                       onPressed: () {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
@@ -556,7 +631,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          // Dots indikator halaman
+          // Dots halaman
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(totalPages, (index) {
@@ -571,12 +646,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   width: 8,
                   height: 8,
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 3,
+                  ),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color:
-                        _currentPage == index ? Colors.blueAccent : Colors.grey,
+                    color: _currentPage == index
+                        ? Colors.blueAccent
+                        : Colors.grey,
                   ),
                 ),
               );

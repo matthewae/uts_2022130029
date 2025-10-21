@@ -95,7 +95,7 @@ class _CartScreenState extends State<CartScreen> {
                                             onPressed: () {
                                               cart.removeItem(cartItem.id);
                                               setState(() {
-                                                _selectedItemId = null; // Deselect after removing
+                                                _selectedItemId = null; // remove selection
                                               });
                                             },
                                           ),
@@ -176,7 +176,7 @@ class _CartScreenState extends State<CartScreen> {
                               },
                             );
                             setState(() {
-                              _selectedItemId = null; // Deselect after checkout
+                              _selectedItemId = null; // remove selection after checkout
                             });
                           } else {
                             showDialog(
