@@ -25,9 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
     "Aki Mobil",
     "Radiator",
     "Shockbreaker",
-    "Velg Racing",
-    "Ban Mobil",
-    "Lampu Depan",
+    "Velg Racing R18",
+    "Ban Mobil R18",
+    "Lampu Depan Bi LED",
     "Lampu Belakang",
     "Filter Udara",
     "Kaca Spion",
@@ -103,34 +103,34 @@ class _HomeScreenState extends State<HomeScreen> {
       "imageUrl":
           "assets/Shockbreaker.png", //contoh yang ada asset gambar sisanya lakuakn hal yang sama
     },
-    "Velg Racing": {
+    "Velg Racing R18": {
       "description": "Velg racing ringan untuk tampilan sporty.",
       "price": "Rp 3.500.000",
       "imageUrl": "assets/Velg Racing.png",
     },
-    "Ban Mobil": {
+    "Ban Mobil R18": {
       "description": "Ban mobil performa tinggi untuk cengkeraman maksimal.",
-      "price": "Rp 900.000",
+      "price": "Rp 1.685.000",
       "imageUrl": "assets/Ban Mobil.png",
     },
-    "Lampu Depan": {
+    "Lampu Depan Bi LED": {
       "description": "Lampu depan LED terang untuk visibilitas malam hari.",
-      "price": "Rp 400.000",
+      "price": "Rp 670.000",
       "imageUrl": "assets/Lampu Depan.png",
     },
     "Lampu Belakang": {
       "description": "Lampu belakang LED modern untuk keamanan.",
-      "price": "Rp 350.000",
+      "price": "Rp 500.000",
       "imageUrl": "assets/Lampu Belakang.png",
     },
     "Filter Udara": {
       "description": "Filter udara mesin untuk performa optimal.",
-      "price": "Rp 150.000",
+      "price": "Rp 300.000",
       "imageUrl": "assets/Filter Udara.png",
     },
     "Kaca Spion": {
       "description": "Kaca spion elegan dengan pandangan luas.",
-      "price": "Rp 200.000",
+      "price": "Rp 635.000",
       "imageUrl": "assets/Kaca Spion.png",
     },
     "Wiper Blade": {
@@ -227,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Cermin Dalam": {
       "description": "Cermin dalam anti silau.",
       "price": "Rp 120.000",
-      "imageUrl": "assets/Kampas Rem.png",
+      "imageUrl": "assets/Cermin Dalam.png",
     },
     "Steering Wheel": {
       "description": "Setir kulit sporty.",
