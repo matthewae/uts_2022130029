@@ -12,7 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   
   final _formKey = GlobalKey<FormState>();
 
-  // controller email dan password
+  
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _login() async {
     if (_formKey.currentState?.validate() ?? false) {
       setState(() {
-        _isLoading = true; // tampil loading
+        _isLoading = true; 
       });
 
       
@@ -40,14 +40,14 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       setState(() {
-        _isLoading = false; //  loading
+        _isLoading = false; 
       });
     } else {
       debugPrint("Form belum diisi semua!");
     }
   }
 
-  // tampilkan alert kalau login gagal
+  // alert login gagal
   void _showErrorAlert(String message) {
     showDialog(
       context: context,
@@ -77,13 +77,13 @@ class _LoginScreenState extends State<LoginScreen> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFF4268F6), 
-            Color(0xFF8B9EFF),
+            Colors.blue, 
+            Colors.lightBlueAccent,
           ],
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent, // gradient
+        backgroundColor: Colors.transparent, 
         body: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Bagian logo di atas (masih coba-coba)
+                  // Bagian logo 
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.33,
                     child: Center(
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 150,
                         height: 150,
                         decoration: BoxDecoration(
-                          color: Colors.white, // ini nanti bisa diganti jadi transparan
+                          color: Colors.white, 
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 48.0),
 
                   const Text(
-                    "Welcome to BShop", 
+                    "Welcome to WARMEE", 
                     style: TextStyle(
                       fontSize: 32.0,
                       fontWeight: FontWeight.bold,
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email tidak boleh kosong'; // email tidak boleh kosong
+                        return 'Email tidak boleh kosong'; 
                       }
                       if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                         return 'Masukkan email yang valid';
@@ -246,7 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               "Login", // tombolnya
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: Color(0xFF4268F6),
+                                color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

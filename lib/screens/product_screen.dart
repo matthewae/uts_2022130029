@@ -40,7 +40,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         title: Text(widget.productName),
         elevation: 0, 
-        backgroundColor: Colors.deepPurple, 
+        backgroundColor: Colors.blue, 
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -134,7 +134,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           icon: const Icon(Icons.shopping_cart, color: Colors.white), // icon
                           label: const Text('Add to cart', style: TextStyle(fontSize: 17, color: Colors.white)),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurple, 
+                            backgroundColor: Colors.blue, 
                             padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14), 
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),

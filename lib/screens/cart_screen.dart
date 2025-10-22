@@ -17,7 +17,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Consumer<CartManager>(
@@ -44,7 +44,7 @@ class _CartScreenState extends State<CartScreen> {
                       child: Card(
                         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         elevation: 2,
-                        color: isSelected ? Colors.deepPurple.shade50 : null,
+                        color: isSelected ? Colors.blue.shade50 : null,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -199,7 +199,7 @@ class _CartScreenState extends State<CartScreen> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepPurple,
+                          backgroundColor: Colors.blue,
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           shape: RoundedRectangleBorder(

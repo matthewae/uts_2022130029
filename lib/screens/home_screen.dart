@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:provider/provider.dart';
+import 'package:uts_2022130029/utils/cart_manager.dart';
 import 'package:uts_2022130029/utils/user_data.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -356,6 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: GFAppBar(
+        backgroundColor: Colors.blue,
         title: !_isSearching
             ? const Text("Sparepart Mobil")
             : SizedBox(
@@ -425,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const Text(
-                    'john.doe@example.com',
+                    'test@eemail.com',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white70,
@@ -663,18 +666,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      floatingActionButton: GFButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Item ditambahkan ke keranjang!')),
+
+      floatingActionButton: Consumer<CartManager>(
+        builder: (context, cart, child) {
+          if (cart.itemCount == 0) {
+            return Container(); // Hide the button if cart is empty
+          }
+          return FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            icon: const Icon(Icons.shopping_cart),
+            label: Text(
+              '${cart.itemCount} item(s) - Rp ${cart.total.toStringAsFixed(0).replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), '.')}',
+              style: const TextStyle(fontSize: 16),
+            ),
           );
         },
-        text: 'Tambah ke Keranjang',
-        icon: const Icon(Icons.shopping_cart, color: Colors.white),
-        color: Colors.blue,
-        textColor: Colors.white,
-        shape: GFButtonShape.pills,
-        size: GFSize.MEDIUM,
       ),
     );
   }

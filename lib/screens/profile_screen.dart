@@ -83,7 +83,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               icon: const Icon(Icons.arrow_forward_ios, size: 16.0),
               onTap: () {
                 Navigator.pop(context);
-                // Already on profile page
               },
             ),
             GFListTile(
@@ -115,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   bottom: 0,
                   right: 0,
                   child: GFIconButton(
-                    color: GFColors.PRIMARY,
+                    color: Colors.blue,
                     shape: GFIconButtonShape.circle,
                     onPressed: () {
                       showDialog(
@@ -213,7 +212,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
               text: 'Edit Profile',
-              color: GFColors.PRIMARY,
+              color: Colors.blue,
               size: GFSize.LARGE,
             ),
           ],
