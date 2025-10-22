@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context).pushReplacementNamed('/home');
       } else {
         // alert password salah
-        _showErrorAlert("Email atau password salah. (masih hardcode)");
+        _showErrorAlert("Email atau password salah. Silahkan coba lagi.");
       }
 
       setState(() {

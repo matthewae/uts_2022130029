@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       "description": "Shockbreaker nyaman untuk stabilitas berkendara.",
       "price": "Rp 600.000",
       "imageUrl":
-          "assets/Shockbreaker.png", //contoh yang ada asset gambar sisanya lakuakn hal yang sama
+          "assets/Shockbreaker.png", 
     },
     "Velg Racing R18": {
       "description": "Velg racing ringan untuk tampilan sporty.",
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Kaca Spion": {
       "description": "Kaca spion elegan dengan pandangan luas.",
       "price": "Rp 635.000",
-      "imageUrl": "assets/Kaca Spion.png",
+      "imageUrl": "assets/Kaca Spion.png", //contoh yang ada asset gambar sisanya lakuakn hal yang sama
     },
     "Wiper Blade": {
       "description": "Wiper blade silikon untuk sapuan bersih.",
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     "Sensor ABS": {
       "description": "Sensor ABS untuk pengereman aman.",
-      "price": "Rp 300.000",
+      "price": "Rp 662.000",
       "imageUrl": "assets/Sensor ABS.png",
     },
     "Cover Jok": {
