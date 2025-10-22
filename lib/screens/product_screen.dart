@@ -86,7 +86,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     const Divider(height: 30, thickness: 1), // divider
                     Text(
                       description,
-                      style: const TextStyle(fontSize: 17, color: Colors.black87, height: 1.5), // Adjusted line height
+                      style: const TextStyle(fontSize: 17, color: Colors.black87, height: 1.5), // line height
                       textAlign: TextAlign.justify, 
                     ),
                     const SizedBox(height: 30),

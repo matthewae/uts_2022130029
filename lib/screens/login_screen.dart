@@ -254,7 +254,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                   const SizedBox(height: 10),
 
-                  // komentar tambahan aja
                   const Text(
                     "",
                     style: TextStyle(color: Colors.white70, fontSize: 12),
